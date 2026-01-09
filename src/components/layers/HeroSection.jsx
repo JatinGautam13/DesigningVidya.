@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ArrowRight, MessageCircle, X } from "lucide-react";
+
+import { ArrowRight, MessageCircle } from "lucide-react";
 import styles from "./HeroSection.module.css";
+import ApplyNowForm from "./ApplyNowForm";
 
 
 export default function HeroSection() {
@@ -29,69 +31,7 @@ export default function HeroSection() {
     setShowMobileForm(false); // Optionally close mobile form on submit
   };
 
-  // Reusable form component
-  const CallbackForm = ({ onClose }) => (
-    <div className={styles.formCard}>
-      <div className={styles.formHeader}>
-        <h3 className={styles.formTitle}></h3>
-        {onClose && (
-          <button
-            type="button"
-            className={styles.closeBtn}
-            onClick={onClose}
-            aria-label="Close"
-          >
-            <X size={20} />
-          </button>
-        )}
-      </div>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className={styles.input}
-          required
-        />
-        <input
-          type="tel"
-          placeholder="Phone No."
-          value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className={styles.input}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className={styles.input}
-          required
-        />
-        <select
-          value={formData.center}
-          onChange={(e) => setFormData({ ...formData, center: e.target.value })}
-          className={styles.select}
-          required
-        >
-          <option value="" className={styles.selectOption}>Preferred Course</option>
-          <option value="graphic-design" className={styles.selectOption}>Graphic Design</option>
-          <option value="animation" className={styles.selectOption}>Animation</option>
-          <option value="vfx" className={styles.selectOption}>VFX</option>
-          <option value="ui-ux" className={styles.selectOption}>UI/UX Design</option>
-          <option value="game-design" className={styles.selectOption}>Game Design</option>
-        </select>
-        <p className={styles.disclaimer}>
-          By clicking on &quot;Submit&quot;, I allow the company to call me and send program information on email/sms/phone.
-        </p>
-        <button type="submit" className={styles.submitBtn}>
-          SUBMIT
-        </button>
-      </form>
-    </div>
-  );
+  // Remove CallbackForm, use ApplyNowForm instead
 
   return (
     <section className={styles.section}>
@@ -121,39 +61,8 @@ export default function HeroSection() {
         <div className={`${styles.plusSign} ${styles.plusSign2}`}>+</div>
       </div>
 
-      {/* Popup Modal for Callback Form */}
-      {showPopupForm && (
-        <div
-          className={styles.popupOverlay}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.7)",
-            zIndex: 9999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            className={styles.popupModal}
-            style={{
-              background: "#18181b",
-              borderRadius: "16px",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-              padding: "2rem",
-              maxWidth: "400px",
-              width: "100%",
-              position: "relative",
-            }}
-          >
-            <CallbackForm onClose={() => setShowPopupForm(false)} />
-          </div>
-        </div>
-      )}
+      {/* Popup Modal for ApplyNowForm */}
+      <ApplyNowForm show={showPopupForm} onClose={() => setShowPopupForm(false)} />
 
       <div className={styles.container}>
         <div className={styles.grid}>
