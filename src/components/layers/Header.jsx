@@ -28,6 +28,20 @@ const courses = [
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCoursesOpen, setIsCoursesOpen] = useState(false);
+  let dropdownTimeout;
+
+  const handleDropdownLeave = () => {
+    dropdownTimeout = setTimeout(() => {
+      setIsCoursesOpen(false);
+    }, 300);
+  };
+
+  const handleDropdownEnter = () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout);
+    }
+    setIsCoursesOpen(true);
+  };
 
   return (
     <header className={styles.header}>
@@ -68,8 +82,8 @@ export default function Header() {
               {/* Courses Dropdown */}
               <div 
                 className={styles.coursesDropdown}
-                onMouseEnter={() => setIsCoursesOpen(true)}
-                onMouseLeave={() => setIsCoursesOpen(false)}
+                onMouseEnter={handleDropdownEnter}
+                onMouseLeave={handleDropdownLeave}
               >
                 <button className={styles.dropdownTrigger}>
                   Courses
