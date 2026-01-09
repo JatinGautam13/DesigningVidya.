@@ -14,15 +14,15 @@ import ProcessInfrastructure from "@/components/layers/ProcessInfrastructure";
 
 export default function Home() {
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="relative bg-black text-white min-h-screen">
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="relative">
         <HeroSection />
         <StatsSection />
+        <AboutSection />
         <ProcessInfrastructure />
         <TestimonialsSection />
         <CoursesSection />
-        <AboutSection />
         <PlacementsSection />
         <ShowcaseSection />
         <CarouselShowcase />

@@ -3,6 +3,7 @@
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
+  background-color: hsl(0, 0%, 4%);
 }
 
 @media (min-width: 768px) {
@@ -65,6 +66,23 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.75rem;
+  background: transparent;
+  border: 2px solid hsl(45, 100%, 50%);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.label:hover {
+  color: hsl(0, 0%, 100%);
+  border-color: hsl(45, 100%, 60%);
+  box-shadow: 0 0 20px hsla(45, 100%, 50%, 0.6),
+              0 0 40px hsla(45, 100%, 50%, 0.4),
+              inset 0 0 20px hsla(45, 100%, 50%, 0.2);
+  transform: translateY(-2px);
 }
 
 @media (min-width: 768px) {
@@ -155,8 +173,17 @@
 }
 
 .imageWrapper {
+  position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
+}
+
+.inlineVideoIframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .projectImage {
@@ -210,6 +237,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+  /* If a video is playing in the card, don't hide content on hover-out. */
+  .projectCardActive .content {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .category {
@@ -256,6 +288,17 @@
   display: none;
   gap: 0.5rem;
   margin-top: 0.75rem;
+}
+@media (min-width: 768px) {
+  .actionButtons {
+    display: flex;
+  }
+}
+
+.shareStatus {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  color: hsl(0, 0%, 75%);
 }
 
 @media (min-width: 768px) {
@@ -338,9 +381,150 @@
 .viewMoreBtn:hover {
   transform: scale(1.05);
   box-shadow: 0 15px 40px hsla(45, 100%, 50%, 0.4);
+  color:white;
+  
 }
 
 .viewMoreIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Video Modal */
+.videoModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: hsla(0, 0%, 0%, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.videoModal {
+  width: min(980px, 100%);
+  background: linear-gradient(145deg, hsla(0, 0%, 12%, 0.85) 0%, hsla(0, 0%, 6%, 0.92) 100%);
+  border: 1px solid hsla(0, 0%, 18%, 0.35);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 30px 80px hsla(0, 0%, 0%, 0.6);
+}
+
+.videoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  gap: 1rem;
+}
+
+.videoTitleBlock {
+  min-width: 0;
+}
+
+.videoKicker {
+  margin: 0;
+  color: hsl(0, 0%, 65%);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.videoTitle {
+  margin: 0.25rem 0 0;
+  color: hsl(0, 0%, 98%);
+  font-size: 1rem;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.videoCloseBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid hsla(0, 0%, 18%, 0.35);
+  background: hsla(0, 0%, 10%, 0.6);
+  color: hsl(0, 0%, 92%);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.videoCloseBtn:hover {
+  transform: scale(1.04);
+  background: hsla(0, 0%, 14%, 0.75);
+}
+
+.videoCloseIcon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.videoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.videoIframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.videoControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-top: 1px solid hsla(0, 0%, 18%, 0.35);
+}
+
+.videoControlBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid hsla(0, 0%, 18%, 0.35);
+  background: hsla(0, 0%, 10%, 0.55);
+  color: hsl(0, 0%, 98%);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.videoControlBtn:hover {
+  transform: translateY(-1px);
+  background: hsla(0, 0%, 14%, 0.7);
+  border-color: hsla(45, 100%, 50%, 0.35);
+}
+
+.videoControlLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid hsla(0, 0%, 18%, 0.35);
+  background: transparent;
+  color: hsl(45, 100%, 50%);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.videoControlLink:hover {
+  transform: translateY(-1px);
+  border-color: hsla(45, 100%, 50%, 0.35);
+}
+
+.videoControlIcon {
   width: 1rem;
   height: 1rem;
 }

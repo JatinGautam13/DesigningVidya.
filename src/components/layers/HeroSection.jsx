@@ -1,7 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import { ArrowRight, MessageCircle } from "lucide-react";
 import styles from "./HeroSection.module.css";
+import ApplyNowForm from "./ApplyNowForm";
+
 
 export default function HeroSection() {
   const [formData, setFormData] = useState({
@@ -11,11 +14,24 @@ export default function HeroSection() {
     center: "",
   });
   const [showMobileForm, setShowMobileForm] = useState(false);
+  const [showPopupForm, setShowPopupForm] = useState(false);
+
+  // Show popup automatically after 30 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopupForm(true);
+    }, 30000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
+    setShowPopupForm(false); // Close popup on submit
+    setShowMobileForm(false); // Optionally close mobile form on submit
   };
+
+  // Remove CallbackForm, use ApplyNowForm instead
 
   return (
     <section className={styles.section}>
@@ -27,7 +43,6 @@ export default function HeroSection() {
         <div className={styles.shapeSquare3} />
         <div className={styles.glowCircle1} />
         <div className={styles.glowCircle2} />
-        
         {/* Triangle shapes */}
         <svg className={styles.triangleSvg1} viewBox="0 0 100 100">
           <polygon points="50,10 90,90 10,90" fill="none" stroke="currentColor" strokeWidth="2" />
@@ -35,18 +50,19 @@ export default function HeroSection() {
         <svg className={styles.triangleSvg2} viewBox="0 0 100 100">
           <polygon points="50,10 90,90 10,90" fill="none" stroke="currentColor" strokeWidth="2" />
         </svg>
-
         {/* Dots pattern */}
         <div className={styles.dotsGrid}>
           {[...Array(24)].map((_, i) => (
             <div key={i} className={styles.dot} />
           ))}
         </div>
-
         {/* Cross/Plus shapes */}
         <div className={`${styles.plusSign} ${styles.plusSign1}`}>+</div>
         <div className={`${styles.plusSign} ${styles.plusSign2}`}>+</div>
       </div>
+
+      {/* Popup Modal for ApplyNowForm */}
+      <ApplyNowForm show={showPopupForm} onClose={() => setShowPopupForm(false)} />
 
       <div className={styles.container}>
         <div className={styles.grid}>
@@ -63,41 +79,49 @@ export default function HeroSection() {
 
             {/* CTA Button */}
             <div className={styles.ctaWrapper}>
-              <button className={styles.ctaButtonPrimary}>
+              <button
+                className={styles.ctaButtonPrimary}
+                onClick={() => setShowPopupForm(true)}
+              >
                 Get Free Career Guidance
                 <ArrowRight className={styles.ctaIcon} />
               </button>
-              <button className={styles.ctaButtonSecondary}>
+              <a
+                href="https://wa.me/917827250823"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.ctaButtonSecondary}
+              >
                 <MessageCircle className={styles.ctaIcon} />
                 Talk to a Career Expert
-              </button>
+              </a>
             </div>
 
             <p className={styles.trustLine}>Trusted by 25,000+ aspiring creators</p>
           </div>
 
-          {/* Right - Callback Form */}
+          {/* Right - Callback Form (Always Visible) */}
           <div className={styles.rightContent}>
-              <div className={styles.mobileFormToggle}>
-                <button
-                  type="button"
-                  className={styles.mobileFormButton}
-                  onClick={() => setShowMobileForm((prev) => !prev)}
-                >
-                  Request Call Back
-                  <ArrowRight
-                    className={`${styles.ctaIcon} ${showMobileForm ? styles.iconOpen : styles.iconClosed}`}
-                  />
-                </button>
-              </div>
-
-              <div
-                className={`${styles.formCard} ${showMobileForm ? styles.expanded : styles.collapsed}`}
+            <div className={styles.mobileFormToggle}>
+              <button
+                type="button"
+                className={styles.mobileFormButton}
+                onClick={() => setShowMobileForm((prev) => !prev)}
               >
+                Request Call Back
+                <ArrowRight
+                  className={`${styles.ctaIcon} ${showMobileForm ? styles.iconOpen : styles.iconClosed}`}
+                />
+              </button>
+            </div>
+
+            <div
+              className={`${styles.formCard} ${showMobileForm ? styles.expanded : styles.collapsed}`}
+            >
+              {/* Always show the form in the right section */}
               <div className={styles.formHeader}>
                 <h3 className={styles.formTitle}></h3>
               </div>
-
               <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                   type="text"
@@ -136,11 +160,9 @@ export default function HeroSection() {
                   <option value="ui-ux" className={styles.selectOption}>UI/UX Design</option>
                   <option value="game-design" className={styles.selectOption}>Game Design</option>
                 </select>
-
                 <p className={styles.disclaimer}>
                   By clicking on &quot;Submit&quot;, I allow the company to call me and send program information on email/sms/phone.
                 </p>
-
                 <button type="submit" className={styles.submitBtn}>
                   SUBMIT
                 </button>

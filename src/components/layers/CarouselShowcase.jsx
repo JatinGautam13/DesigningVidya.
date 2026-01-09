@@ -29,7 +29,7 @@ const slides = [
     title: "Fantasy Realm",
     subtitle: "Environment art for AAA RPGs",
     category: "Gaming",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b0b0b?w=900&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1585620385456-4759f9b5c7d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 5,
@@ -49,7 +49,7 @@ const slides = [
 
 export default function CarouselShowcase() {
   return (
-    <section className="bg-neutral-950 text-white py-16 md:py-24" id="carousel">
+    <section className="relative bg-neutral-950 text-white py-16 md:py-24 z-0" id="carousel">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-start justify-between gap-6 mb-10">
           <div>

@@ -1,14 +1,17 @@
+/* PlacementsSection.module.css */
+
 /* Placements Section Styles */
 .section {
   padding: 3rem 0 4rem;
   position: relative;
   overflow: hidden;
   background: linear-gradient(to bottom, hsl(0, 0%, 4%), hsla(0, 0%, 12%, 0.2), hsl(0, 0%, 4%));
+  background-color: hsl(0, 0%, 4%);
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 5rem 0 6rem;
+    padding: 1rem 0 1rem;
   }
 }
 
@@ -36,6 +39,23 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.75rem;
+  background: transparent;
+  border: 2px solid hsl(45, 100%, 50%);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.label:hover {
+  color: hsl(0, 0%, 100%);
+  border-color: hsl(45, 100%, 60%);
+  box-shadow: 0 0 20px hsla(45, 100%, 50%, 0.6),
+              0 0 40px hsla(45, 100%, 50%, 0.4),
+              inset 0 0 20px hsla(45, 100%, 50%, 0.2);
+  transform: translateY(-2px);
 }
 
 @media (min-width: 768px) {
@@ -88,67 +108,55 @@
   }
 }
 
-/* Marquee */
-.marqueeWrapper {
-  position: relative;
-  overflow: hidden;
+/* Company Logos (2 rows) - No boxes, just logos */
+.logosWrapper {
   padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
-  .marqueeWrapper {
+  .logosWrapper {
     padding: 1.5rem 0;
+    gap: 2rem;
   }
 }
 
-.marqueeRow {
+.logosRow {
   display: flex;
-  animation: marquee 30s linear infinite;
-}
-
-.marqueeRowReverse {
-  display: flex;
-  margin-top: 0.75rem;
-  animation: marquee 35s linear infinite reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 @media (min-width: 768px) {
-  .marqueeRowReverse {
-    margin-top: 1rem;
+  .logosRow {
+    gap: 2.5rem;
   }
 }
 
-.companyBadge {
-  flex-shrink: 0;
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: hsla(0, 0%, 12%, 0.5);
-  border-radius: 0.5rem;
-  border: 1px solid hsla(0, 0%, 18%, 0.3);
-  transition: border-color 0.2s;
+.logoImg {
+  display: block;
+  height: 35px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  opacity: 2.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.logoImg:hover {
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 @media (min-width: 768px) {
-  .companyBadge {
-    margin: 0 1rem;
-    padding: 0.75rem 1.5rem;
-  }
-}
-
-.companyBadge:hover {
-  border-color: hsla(45, 100%, 50%, 0.5);
-}
-
-.companyName {
-  color: hsl(0, 0%, 98%);
-  font-weight: 600;
-  white-space: nowrap;
-  font-size: 0.75rem;
-}
-
-@media (min-width: 768px) {
-  .companyName {
-    font-size: 0.875rem;
+  .logoImg {
+    height: 40px;
+    max-width: 160px;
   }
 }
 
@@ -179,6 +187,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -190,15 +199,11 @@
 .statLabel {
   color: hsl(0, 0%, 65%);
   font-size: 0.75rem;
+  margin: 0.5rem 0 0 0;
 }
 
 @media (min-width: 768px) {
   .statLabel {
     font-size: 0.875rem;
   }
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }

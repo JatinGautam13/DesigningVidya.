@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 import {
   Monitor,
   Video,
@@ -10,6 +11,8 @@ import {
   Briefcase,
 } from "lucide-react";
 import styles from "./ProcessInfrastructure.module.css";
+
+const publicImage = (filename) => `/uploads/compressed/${encodeURIComponent(filename)}`;
 
 const processSteps = [
   {
@@ -42,33 +45,45 @@ const infrastructure = [
   {
     icon: Monitor,
     title: "Modern Workstations",
-    description: "High-spec systems tuned for VFX, design, and editing.",
+    description: "Learn video editing, animation, motion graphics, and VFX on high-performance systems.",
+    imageSrc: publicImage("18.webp"),
+    imageAlt: "Studio workstation setup",
   },
   {
     icon: Video,
     title: "Studio-Style Classrooms",
-    description: "Immersive, production-like environments for hands-on learning.",
+    description: "Hands-on learning in studio-style classrooms with real creative tools.",
+    imageSrc: publicImage("classes with gulshan sir.webp"),
+    imageAlt: "Classroom infrastructure",
   },
   {
     icon: Users,
     title: "Small Batch Learning",
-    description: "Focused cohorts so mentors can go deep on your work.",
+    description: "Small batches for personal attention and better learning results.",
+    imageSrc: publicImage("WhatsApp Image 2026-01-04 at 10.29.19.webp"),
+    imageAlt: "Students learning together",
   },
   {
     icon: MessageSquare,
-    title: "Collaboration Zones",
-    description: "Spaces built for pair sessions, critiques, and team builds.",
+    title: "Creative Collaboration Spaces",
+    description: "Work together on video editing, animation, and motion graphics projects through team activities and reviews.",
+    imageSrc: publicImage("WhatsApp Image 2026-01-04 at 10.29.20.webp"),
+    imageAlt: "Collaboration space",
   },
   {
     icon: Coffee,
-    title: "Creative Comforts",
-    description: "Acoustic-treated rooms, lounge corners, and good lighting.",
+    title: "Comfortable Creative Spaces",
+    description: "Well-lit rooms and calm spaces that help you focus on editing, animation, and VFX practice.",
+    imageSrc: publicImage("WhatsApp Image 2026-01-04 at 10.29.21.webp"),
+    imageAlt: "Comfortable creative lounge",
   },
   {
     icon: Briefcase,
-    title: "Real Office Vibe",
+    title: "Industry Work Environment",
     description:
-      "Processes that mirror agency and studio delivery rhythms.",
+      "Experience a real agency-style workflow that prepares you for creative industry jobs.",
+    imageSrc: publicImage("WhatsApp Image 2025-03-27 at 3.42.30 PM.webp"),
+    imageAlt: "Office-style environment",
   },
 ];
 
@@ -150,10 +165,21 @@ function InfraCard({ item, index }) {
       className={styles.infraCard}
       style={{ animationDelay: `${index * 60}ms` }}
     >
-      <div className={styles.infraIcon} aria-hidden="true">
-        <Icon className={styles.infraIconSvg} />
+      <div className={styles.infraMedia} aria-hidden="true">
+        <Image
+          src={item.imageSrc}
+          alt={item.imageAlt}
+          fill
+          className={styles.infraMediaImage}
+          sizes="(max-width: 719px) 100vw, (max-width: 1039px) 50vw, 33vw"
+        />
+
+        <div className={styles.infraBadge} aria-hidden="true">
+          <Icon className={styles.infraBadgeIcon} />
+        </div>
       </div>
-      <div>
+
+      <div className={styles.infraBody}>
         <h4 className={styles.infraTitle}>{item.title}</h4>
         <p className={styles.infraDesc}>{item.description}</p>
       </div>
@@ -168,9 +194,9 @@ export default function ProcessInfrastructure() {
     <section className={styles.section} aria-labelledby="process-heading">
       <div className={styles.container}>
         <div className={styles.intro}>
-          <p className={styles.kicker}>Our Process</p>
+          <button className={styles.kicker}>Our Process</button>
           <h2 id="process-heading" className={styles.heading}>
-            How We Take You from Beginner to Job-Ready Professional
+            How We Take You from Beginner to Job-<span>Ready Professional</span>
           </h2>
           <p className={styles.subheading}>
             A structured, mentor-led track that moves you from foundations to
@@ -191,9 +217,9 @@ export default function ProcessInfrastructure() {
         </div>
 
         <div className={styles.infraHeader}>
-          <p className={styles.kicker}>Our Infrastructure</p>
+          <button className={styles.kicker}>Our Infrastructure</button>
           <h3 className={styles.infraHeading}>
-            Spaces built for real production work
+            Our learning environment
           </h3>
         </div>
 

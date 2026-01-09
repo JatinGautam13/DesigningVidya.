@@ -4,7 +4,7 @@ import { Calendar, Users, GraduationCap, Trophy, Briefcase, Target } from "lucid
 import styles from "./StatsSection.module.css";
 
 const stats = [
-  { icon: Calendar, value: 2009, suffix: "", label: "Established Since", prefix: "" },
+  { icon: Calendar, value: 2018, suffix: "", label: "Established Since", prefix: "" },
   { icon: Users, value: 1500, suffix: "+", label: "Alumni Placed", prefix: "" },
   { icon: GraduationCap, value: 100, suffix: "+", label: "Expert Mentors", prefix: "" },
   { icon: Trophy, value: 10, suffix: "+", label: "Industry Awards", prefix: "" },
@@ -89,9 +89,9 @@ export default function StatsSection() {
       <div className={styles.container}>
         {/* Header */}
         <div className={styles.header}>
-          <span className={styles.label}>
+          <button className={styles.label}>
             Our Achievements
-          </span>
+          </button>
           <h2 className={styles.heading}>
             <span className={styles.headingWhite}>Numbers That</span>
             <span className={styles.headingGradient}> Speak Success</span>
