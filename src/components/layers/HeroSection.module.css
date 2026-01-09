@@ -598,3 +598,15 @@
   0%, 100% { transform: translateY(0px) rotate(45deg); }
   50% { transform: translateY(-20px) rotate(45deg); }
 }
+
+.closeBtn
+{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: hsl(0, 0%, 80%);
+  font-size: 1.5rem;
+  cursor: pointer;
+}

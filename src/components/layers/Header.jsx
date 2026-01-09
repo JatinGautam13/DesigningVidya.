@@ -15,6 +15,7 @@ import {
   Scissors
 } from "lucide-react";
 import styles from "./Header.module.css";
+import ApplyNowForm from "./ApplyNowForm";
 
 const courses = [
   { name: "Animation", icon: Film, href: "#courses" },
@@ -28,6 +29,7 @@ const courses = [
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCoursesOpen, setIsCoursesOpen] = useState(false);
+  const [showApplyForm, setShowApplyForm] = useState(false);
   let dropdownTimeout;
 
   const handleDropdownLeave = () => {
@@ -126,9 +128,10 @@ export default function Header() {
                 <Phone className={styles.phoneIcon} />
                 <span className={styles.phoneText}>+91 78272 50823</span>
               </a>
-              <button className={styles.applyBtn}>
+              <button className={styles.applyBtn} onClick={() => setShowApplyForm(true)}>
                 Apply Now
               </button>
+              <ApplyNowForm show={showApplyForm} onClose={() => setShowApplyForm(false)} />
             </div>
 
             {/* Mobile Menu Button */}
