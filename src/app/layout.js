@@ -1,5 +1,8 @@
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import Header from "@/components/layers/Header";
+import Footer from "@/components/layers/Footer";
+import WhatsAppWidget from "@/components/layers/WhatsAppWidget";
 import "../styles/globals.css";
 
 const geistSans = Geist({
@@ -41,7 +44,12 @@ export default function RootLayout({ children }) {
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        {children}
+        <div className="relative bg-black text-white min-h-screen">
+          <Header />
+          {children}
+          <Footer />
+          <WhatsAppWidget />
+        </div>
       </body>
     </html>
   );
