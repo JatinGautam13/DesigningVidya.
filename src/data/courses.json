@@ -1,0 +1,270 @@
+{
+  "platform": "DesigningVidya",
+  "courses": [
+    {
+      "id": "GD-AI-01",
+      "category": "Certification",
+      "title": "Graphic Design: Essentials WITH AI",
+      "duration": "1 Month",
+      "price": 5000,
+      "description": "Learn graphic design fundamentals with modern AI tools to create professional digital creatives.",
+      "outcomes": [
+        "Create social media creatives",
+        "Design thumbnails and posters",
+        "Use AI tools for faster design workflow"
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "title": "Design Fundamentals",
+          "topics": [
+            "Elements of Design",
+            "Principles of Design",
+            "Color Theory",
+            "Typography Basics"
+          ]
+        },
+        {
+          "module": 2,
+          "title": "Tools & Software",
+          "topics": [
+            "Adobe Photoshop Basics",
+            "Adobe Illustrator Basics",
+            "Canvas & Layout Systems"
+          ]
+        },
+        {
+          "module": 3,
+          "title": "AI in Graphic Design",
+          "topics": [
+            "Introduction to AI Design Tools",
+            "AI Image Generation",
+            "AI Background Removal",
+            "AI Typography Assistance"
+          ]
+        },
+        {
+          "module": 4,
+          "title": "Practical Projects",
+          "topics": [
+            "Social Media Post Design",
+            "YouTube Thumbnail Design",
+            "Basic Branding Assets"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VE-AI-01",
+      "category": "Certification",
+      "title": "Video Editing: Reels & Shorts WITH AI",
+      "duration": "1 Month",
+      "price": 6000,
+      "description": "Master short-form video editing for social media using AI-powered tools.",
+      "outcomes": [
+        "Edit Instagram reels and YouTube shorts",
+        "Understand pacing and transitions",
+        "Use AI for captions and effects"
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "title": "Video Editing Basics",
+          "topics": [
+            "Video Formats & Codecs",
+            "Frame Rates & Aspect Ratios",
+            "Storyboarding for Short Videos"
+          ]
+        },
+        {
+          "module": 2,
+          "title": "Editing Software",
+          "topics": [
+            "Adobe Premiere Pro Basics",
+            "CapCut & Mobile Editing",
+            "Timeline & Trimming Techniques"
+          ]
+        },
+        {
+          "module": 3,
+          "title": "AI Tools for Video",
+          "topics": [
+            "Auto Captions",
+            "AI Music Sync",
+            "AI Transitions & Effects"
+          ]
+        },
+        {
+          "module": 4,
+          "title": "Platform Optimization",
+          "topics": [
+            "Instagram Reels Optimization",
+            "YouTube Shorts Algorithm",
+            "Export Settings for Social Media"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MG-AI-01",
+      "category": "Certification",
+      "title": "Motion Graphics: Intro to Kinetic Typography WITH AI",
+      "duration": "1 Month",
+      "price": 8000,
+      "description": "Learn motion design fundamentals with kinetic typography using AI-assisted workflows.",
+      "outcomes": [
+        "Create animated text videos",
+        "Understand motion principles",
+        "Apply AI animation presets"
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "title": "Motion Design Basics",
+          "topics": [
+            "Principles of Motion",
+            "Timing & Easing",
+            "Visual Rhythm"
+          ]
+        },
+        {
+          "module": 2,
+          "title": "After Effects Essentials",
+          "topics": [
+            "Interface Overview",
+            "Keyframes & Graph Editor",
+            "Text Animation Tools"
+          ]
+        },
+        {
+          "module": 3,
+          "title": "AI Motion Tools",
+          "topics": [
+            "AI Text Animation",
+            "Auto Motion Presets",
+            "AI Video Enhancements"
+          ]
+        },
+        {
+          "module": 4,
+          "title": "Projects",
+          "topics": [
+            "Lyric Video",
+            "Promo Typography Video",
+            "Social Media Motion Clip"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ADV-2D-AI-01",
+      "category": "Advanced Certification",
+      "title": "2D Animation & Digital Illustration WITH AI",
+      "duration": "3–4 Months",
+      "price": 25000,
+      "description": "Create professional 2D animations and illustrations using AI-enhanced pipelines.",
+      "outcomes": [
+        "Create frame-by-frame animation",
+        "Design characters and environments",
+        "Use AI for concept art"
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "title": "Illustration Fundamentals",
+          "topics": [
+            "Sketching & Anatomy",
+            "Digital Painting",
+            "Perspective & Composition"
+          ]
+        },
+        {
+          "module": 2,
+          "title": "2D Animation Basics",
+          "topics": [
+            "12 Principles of Animation",
+            "Character Walk Cycles",
+            "Lip Sync Basics"
+          ]
+        },
+        {
+          "module": 3,
+          "title": "AI Assisted Illustration",
+          "topics": [
+            "AI Concept Art",
+            "Style Exploration",
+            "Background Generation"
+          ]
+        },
+        {
+          "module": 4,
+          "title": "Final Project",
+          "topics": [
+            "Short 2D Animated Film",
+            "Illustration Portfolio"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DIP-AI-01",
+      "category": "Diploma",
+      "title": "Professional Animation & VFX WITH AI",
+      "duration": "12 Months",
+      "price": 115000,
+      "description": "Industry-focused diploma program preparing students for animation & VFX careers.",
+      "outcomes": [
+        "Job-ready animation skills",
+        "Strong demo reel",
+        "Understanding studio pipelines"
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "title": "Foundation Skills",
+          "topics": [
+            "Design Fundamentals",
+            "Animation Principles",
+            "Visual Storytelling"
+          ]
+        },
+        {
+          "module": 2,
+          "title": "Animation Production",
+          "topics": [
+            "2D & 3D Animation",
+            "Character Animation",
+            "Rigging Basics"
+          ]
+        },
+        {
+          "module": 3,
+          "title": "VFX & Compositing",
+          "topics": [
+            "Green Screen",
+            "Rotoscoping",
+            "Visual Effects Pipeline"
+          ]
+        },
+        {
+          "module": 4,
+          "title": "AI in Production",
+          "topics": [
+            "AI Asset Generation",
+            "AI Cleanup Tools",
+            "AI Motion Assistance"
+          ]
+        },
+        {
+          "module": 5,
+          "title": "Portfolio & Placement Prep",
+          "topics": [
+            "Showreel Creation",
+            "Interview Preparation",
+            "Industry Workflow"
+          ]
+        }
+      ]
+    }
+  ]
+}

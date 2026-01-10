@@ -2,75 +2,51 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { 
-  Film, 
-  Sparkles, 
-  Palette, 
-  MonitorPlay, 
-  Wand2,
-  ArrowRight 
+  ArrowRight,
+  Clock
 } from "lucide-react";
 import styles from "./CardCourses.module.css";
+import coursesData from "@/data/courses.json";
 
-const courseCategories = [
-  {
-    icon: MonitorPlay,
-    title: "Animation",
-    imageSrc: "/uploads/web%20p/rh31c6rw5qyj7tha0kv6.webp",
-    imageAlt: "Animation course",
-    description:
-      "Bring stories to life with our animation course. Learn 2D animation, character animation, storyboarding, and animation principles using industry-standard tools. This course is ideal for beginners who want a career in animation.",
-    gradient: styles.gradientPrimaryNeon,
-    courses: ["animation course", "2D animation", "character animation"],
+// Map course IDs to images and tags
+const courseImages = {
+  "GD-AI-01": {
+    src: "/uploads/web%20p/uw5apddwgglibwox2j9n.webp",
+    alt: "Graphic designing course"
   },
-  {
-    icon: Sparkles,
-    title: "VFX",
-    imageSrc:
-      "/uploads/web%20p/ghxqqxlgematwrkjrywf.webp",
-    imageAlt: "VFX course",
-    description:
-      "Learn professional VFX techniques and visual effects that go beyond the camera. Our VFX course covers green screen, compositing, CG integration, and cinematic visual effects used in films and digital media.",
-    gradient: styles.gradientNeonCyber,
-    courses: ["VFX course", "visual effects", "green screen", "compositing"],
+  "VE-AI-01": {
+    src: "/uploads/web%20p/yo98tajyhjnsd4rr9fex.webp",
+    alt: "Video editing course"
   },
-  {
-    icon: Wand2,
-    title: "Motion Graphics",
-    imageSrc:
-      "/uploads/web%20p/g5qhpmctapzpwjjgpmlf.webp",
-    imageAlt: "Motion graphics course",
-    description:
-      "Master motion graphics design and create visuals that move and communicate clearly. This motion graphics course teaches kinetic typography, visual storytelling, logo animation, and brand videos for digital platforms.",
-    gradient: styles.gradientPrimaryElectric,
-    courses: ["motion graphics course", "motion graphics design", "logo animation"],
+  "MG-AI-01": {
+    src: "/uploads/web%20p/g5qhpmctapzpwjjgpmlf.webp",
+    alt: "Motion graphics course"
   },
-  {
-    icon: Palette,
-    title: "Graphic Designing",
-    imageSrc:
-      "/uploads/web%20p/uw5apddwgglibwox2j9n.webp",
-    imageAlt: "Graphic designing course",
-    description:
-      "Learn graphic designing from scratch and create visuals that build strong brands. This graphic design course covers branding, logo design, layout design, typography, and visual identity using professional design tools.",
-    gradient: styles.gradientAccentVibrant,
-    courses: ["graphic designing course", "graphic design course", "logo design", "branding"],
+  "ADV-2D-AI-01": {
+    src: "/uploads/web%20p/rh31c6rw5qyj7tha0kv6.webp",
+    alt: "Animation course"
   },
-  {
-    icon: Film,
-    title: "Video Editing",
-    imageSrc:
-      "/uploads/web%20p/yo98tajyhjnsd4rr9fex.webp",
-    imageAlt: "Video editing course",
-    description:
-      "Master video editing and turn raw footage into professional videos. This video editing course teaches story editing, transitions, sound design, color correction, and editing workflows used for YouTube, ads, and films.",
-    gradient: styles.gradientVibrantPrimary,
-    courses: ["video editing course", "professional video editing", "color correction", "sound design"],
-  },
-];
+  "DIP-AI-01": {
+    src: "/uploads/web%20p/ghxqqxlgematwrkjrywf.webp",
+    alt: "VFX course"
+  }
+};
+
+const courseTags = {
+  "GD-AI-01": ["graphic design", "AI tools", "photoshop", "illustrator"],
+  "VE-AI-01": ["video editing", "reels & shorts", "premiere pro", "AI captions"],
+  "MG-AI-01": ["motion graphics", "kinetic typography", "after effects", "AI animation"],
+  "ADV-2D-AI-01": ["2D animation", "digital illustration", "character design", "AI concept art"],
+  "DIP-AI-01": ["animation", "VFX", "compositing", "professional training"]
+};
 
 export default function CoursesSection() {
   const [openIndex, setOpenIndex] = useState(null);
+
+  // Get courses from JSON data
+  const courses = coursesData.courses || [];
 
   return (
     <section id="courses" className={styles.section}>
@@ -95,23 +71,27 @@ export default function CoursesSection() {
 
         {/* Course Grid */}
         <div className={styles.courseGrid}>
-          {courseCategories.map((course, index) => {
+          {courses.map((course, index) => {
             const isOpen = openIndex === index;
+            const courseImage = courseImages[course.id];
+            const tags = courseTags[course.id] || [];
 
             return (
               <div
-                key={course.title}
+                key={course.id}
                 className={`${styles.courseCard} ${isOpen ? styles.courseCardOpen : ""}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className={styles.cardMedia}>
-                  <Image
-                    src={course.imageSrc}
-                    alt={course.imageAlt}
-                    fill
-                    className={styles.cardMediaImage}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
+                  {courseImage && (
+                    <Image
+                      src={courseImage.src}
+                      alt={courseImage.alt}
+                      fill
+                      className={styles.cardMediaImage}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  )}
                 </div>
 
                 <button
@@ -121,7 +101,11 @@ export default function CoursesSection() {
                 >
                   <div className={styles.headings}>
                     <h3 className={styles.courseTitle}>{course.title}</h3>
-                    <span className={styles.mobileSubline}>Tap to see details</span>
+                    <div className={styles.courseInfo}>
+                      <span className={styles.infoItem}>
+                        <Clock size={14} /> {course.duration}
+                      </span>
+                    </div>
                   </div>
                   <ArrowRight className={`${styles.toggleIcon} ${isOpen ? styles.toggleIconOpen : ""}`} />
                 </button>
@@ -130,17 +114,17 @@ export default function CoursesSection() {
                   <p className={styles.courseDesc}>{course.description}</p>
 
                   <div className={styles.skillsWrapper}>
-                    {course.courses.map((skill) => (
-                      <span key={skill} className={styles.skillTag}>
-                        {skill}
+                    {tags.map((tag) => (
+                      <span key={tag} className={styles.skillTag}>
+                        {tag}
                       </span>
                     ))}
                   </div>
 
-                  <button className={styles.courseBtn}>
-                    Explore Courses
+                  <Link href={`/courses/${course.id}`} className={styles.courseBtn}>
+                    Explore Course
                     <ArrowRight className={styles.btnIcon} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             );
